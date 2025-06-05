@@ -1,4 +1,3 @@
-// ./Src/Handlers/Load/slashCommand.js
 const { REST, Routes } = require("discord.js");
 const fs = require("fs");
 const path = require("path");
@@ -32,8 +31,15 @@ async function loadSlashCommands(client, color) {
             }
             commandSummary.get(category).push(command.name);
 
+            // Convert the command data to JSON
+            const commandData = command.data.toJSON();
+
+            // Add integration_types and contexts for user-installable commands
+            commandData.integration_types = [0, 1]; // 0: GUILD_INSTALL, 1: USER_INSTALL
+            commandData.contexts = [0, 1, 2]; // 0: GUILD, 1: BOT_DM, 2: PRIVATE_CHANNEL
+
             client.slashCommands.set(command.name, command);
-            commands.push(command.data.toJSON());
+            commands.push(commandData);
           } catch (err) {
             console.log(color.red(`❌ Failed to load command at ${filepath}: ${err.message}`));
             continue;
