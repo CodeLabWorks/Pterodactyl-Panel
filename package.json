@@ -1,0 +1,27 @@
+{
+  "name": "uptime-kuma-discord-bot",
+  "version": "1.0.0",
+  "description": "A discord bot where integrates with uptime kuma",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShadowGaming100/Uptime-Kuma-Discord-Bot.git"
+  },
+  "author": "wisard_gaming",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShadowGaming100/Uptime-Kuma-Discord-Bot/issues"
+  },
+  "homepage": "https://github.com/ShadowGaming100/Uptime-Kuma-Discord-Bot#readme",
+  "dependencies": {
+    "axios": "^1.9.0",
+    "colors": "^1.4.0",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.5.0",
+    "moment": "^2.30.1",
+    "socket.io-client": "^4.8.1"
+  }
+}
