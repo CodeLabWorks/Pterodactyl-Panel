@@ -23,7 +23,7 @@ module.exports = {
 
   async execute(interaction, client) {
     try {
-      await interaction.deferReply({ ephemeral: true });
+      await interaction.deferReply({ flags: 64 });
       const timestamp = `<t:${Math.floor(Date.now() / 1000)}:f>`;
 
       // Run git pull with timeout
@@ -60,7 +60,7 @@ module.exports = {
       if (needsInstall) {
         await interaction.followUp({
           content: `${timestamp} 📦 Detected changes to package files. Running \`npm install\`...`,
-          ephemeral: true
+          flags: 64
         });
 
         try {
@@ -73,7 +73,7 @@ module.exports = {
         } catch (npmErr) {
           await interaction.followUp({
             content: `❌ NPM install failed:\n\`\`\`${npmErr.message || npmErr.toString()}\`\`\``,
-            ephemeral: true
+            flags: 64
           });
           return;
         }
@@ -81,7 +81,7 @@ module.exports = {
 
       await interaction.followUp({
         content: `${timestamp} ♻️ Restarting the bot now...`,
-        ephemeral: true
+        flags: 64
       });
 
       setTimeout(() => {
@@ -91,7 +91,7 @@ module.exports = {
       if (!interaction.replied && !interaction.deferred) {
         await interaction.reply({
           content: '❌ Unexpected error occurred while processing this command.',
-          ephemeral: true,
+          flags: 64,
         });
       }
     }

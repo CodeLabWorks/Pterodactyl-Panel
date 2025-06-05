@@ -17,7 +17,7 @@ module.exports = {
     if (!guild) {
       return interaction.reply({
         content: "❌ This command can only be used in a server!",
-        ephemeral: true
+        flags: 64
       });
     }
 
@@ -26,7 +26,7 @@ module.exports = {
     if (!iconURL) {
       return interaction.reply({
         content: "❌ This server does not have an icon.",
-        ephemeral: true
+        flags: 64
       });
     }
 
