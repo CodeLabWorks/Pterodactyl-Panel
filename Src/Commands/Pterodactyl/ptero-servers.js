@@ -7,8 +7,7 @@ module.exports = {
   category: 'Pterodactyl',
   usage: '/ptero-servers',
   cooldown: 5,
-  devOnly: false,
-  guildOnly: false,
+
 
   data: new SlashCommandBuilder()
     .setName('ptero-servers')

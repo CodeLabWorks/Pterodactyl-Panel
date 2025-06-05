@@ -9,13 +9,6 @@ module.exports = {
   category: "Pterodactyl",
   usage: "/ptero-status",
   cooldown: 5,
-  devOnly: false,
-  guildOnly: false,
-  requiredRole: false,
-  voiceOnly: false,
-  nsfwOnly: false,
-  toggleOffCmd: false,
-  maintenanceCmd: false,
 
   data: new SlashCommandBuilder()
     .setName('ptero-status')
