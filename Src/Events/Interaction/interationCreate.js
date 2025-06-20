@@ -12,12 +12,15 @@ module.exports = {
   async execute(interaction, client) {
     if (interaction.isAutocomplete()) {
       const command = client.slashCommands.get(interaction.commandName);
-      if (command && typeof command.autocomplete === 'function') {
+      if (command && typeof command.autocomplete === "function") {
         try {
           await command.autocomplete(interaction, client);
         } catch (error) {
-          console.error(`❌ Autocomplete error in command ${command.name}:`, error);
-          await interaction.respond([]); 
+          console.error(
+            `❌ Autocomplete error in command ${command.name}:`,
+            error
+          );
+          await interaction.respond([]);
         }
       }
       return;
@@ -55,7 +58,8 @@ module.exports = {
 
     if (maintenanceCmd && client.config?.maintenance) {
       return interaction.reply({
-        content: "⚠️ Bot is under maintenance. This command is temporarily unavailable.",
+        content:
+          "⚠️ Bot is under maintenance. This command is temporarily unavailable.",
         flags: 64,
       });
     }
@@ -66,7 +70,8 @@ module.exports = {
         : [settings?.Developer?.ids];
       if (!devs.includes(userId)) {
         return interaction.reply({
-          content: "❌ You do not have permission to use this developer-only command.",
+          content:
+            "❌ You do not have permission to use this developer-only command.",
           flags: 64,
         });
       }
@@ -151,7 +156,9 @@ module.exports = {
         (perm) => !member.permissions.has(PermissionsBitField.Flags[perm])
       );
       if (missingPermissions.length > 0) {
-        const permLabels = missingPermissions.map(getPermissionLabel).join(", ");
+        const permLabels = missingPermissions
+          .map(getPermissionLabel)
+          .join(", ");
         return interaction.reply({
           content: `❌ You are missing the following permissions to use this command: ${permLabels}`,
           flags: 64,
@@ -162,7 +169,9 @@ module.exports = {
     const timeLeft = checkAndSetCooldown(command.name, userId, cooldown);
     if (timeLeft) {
       return interaction.reply({
-        content: `⏳ Please wait ${timeLeft.toFixed(1)}s before reusing the \`${command.name}\` command.`,
+        content: `⏳ Please wait ${timeLeft.toFixed(1)}s before reusing the \`${
+          command.name
+        }\` command.`,
         flags: 64,
       });
     }

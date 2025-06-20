@@ -1,4 +1,9 @@
-const { version, Client, ActivityType, PresenceUpdateStatus } = require("discord.js");
+const {
+  version,
+  Client,
+  ActivityType,
+  PresenceUpdateStatus,
+} = require("discord.js");
 const { author } = require("../../../package.json");
 const moment = require("moment");
 const color = require("colors");
@@ -8,30 +13,45 @@ module.exports = {
   once: false,
 
   async execute(client) {
-    console.log("=======================================< LIMIT >=======================================".gray);
-    console.log(`${color.bold.bgBlue(`[${moment().format("dddd - DD/MM/YYYY - hh:mm:ss", true)}]`)} ` + `${color.bold.green(`[READY]`)} ` + `Logging into Discord...`.yellow);
+    console.log(
+      "=======================================< LIMIT >======================================="
+        .gray
+    );
+    console.log(
+      `${color.bold.bgBlue(
+        `[${moment().format("dddd - DD/MM/YYYY - hh:mm:ss", true)}]`
+      )} ` +
+        `${color.bold.green(`[READY]`)} ` +
+        `Logging into Discord...`.yellow
+    );
     console.table({
-      "Name": client.user.tag,
-      "Author": `${author}`,
+      Name: client.user.tag,
+      Author: `${author}`,
       "Discord.js": `v${version}`,
       "Node.js": `${process.version}`,
-      "Guilds": client.guilds.cache.size,
-      "Users": client.users.cache.size,
-      "Channels": client.channels.cache.size,
+      Guilds: client.guilds.cache.size,
+      Users: client.users.cache.size,
+      Channels: client.channels.cache.size,
       "Slash Commands": client.slashCommands.size,
-      "Events": client.events.size
+      Events: client.events.size,
     });
-    console.log(`${color.bold.bgBlue(`[${moment().format("dddd - DD/MM/YYYY - hh:mm:ss", true)}]`)} ` + `${color.bold.green(`[READY]`)} ` + `${client.user.tag} is online!`.yellow);
+    console.log(
+      `${color.bold.bgBlue(
+        `[${moment().format("dddd - DD/MM/YYYY - hh:mm:ss", true)}]`
+      )} ` +
+        `${color.bold.green(`[READY]`)} ` +
+        `${client.user.tag} is online!`.yellow
+    );
 
     const acts = [
       {
         name: "/help",
-        type: 5,    
+        type: 5,
         status: "dnd",
       },
       {
         name: `listening ${client.users.cache.size} user(s)`,
-        type: 3,   
+        type: 3,
         status: "idle",
       },
       {
